@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ROUTES } from "./util/routes";
+import Landing from "./components/Landing/Landing";
+import UserAndComputer from "./components/UserAndComputer/UserAndComputer";
+import ComputerAndComputer from "./components/ComputeAndComputer/ComputerAndComputer";
+import NotFound from "./components/NotFound/NotFound";
+import "./App.css";
+import ErrorBoundary from "./util/ErrorBoundary";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  let ret = (
+    <ErrorBoundary>
+      <Router>
+        <Switch>
+          <Route component={Landing} exact path={ROUTES.index} />
+          <Route
+            component={ComputerAndComputer}
+            exact
+            path={ROUTES.computer_and_computer}
+          />
+          <Route
+            component={UserAndComputer}
+            exact
+            path={ROUTES.user_and_computer}
+          />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </ErrorBoundary>
   );
+  return ret;
 }
 
 export default App;
