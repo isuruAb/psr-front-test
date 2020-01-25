@@ -1,0 +1,9 @@
+.hand {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hand:last-child {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}

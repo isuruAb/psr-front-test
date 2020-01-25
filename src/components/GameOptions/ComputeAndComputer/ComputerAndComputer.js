@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
 import "./ComputerAndComputer.scss";
-import { options } from "../../../constants/options";
+import { OPTIONS } from "../../../constants/options";
 import Hand from "../Hand";
 export default () => {
-  const [handOne, setHandOne] = useState(options[1]);
-  const [handTwo, setHandTwo] = useState(options[1]);
+  const [handOne, setHandOne] = useState(OPTIONS[1]);
+  const [handTwo, setHandTwo] = useState(OPTIONS[1]);
 
   const handlePlay = () => {
     const firstChoice = Math.floor(Math.random() * Math.floor(3));
     const secondChoice = Math.floor(Math.random() * Math.floor(3));
-    setHandOne(options[firstChoice]);
-    setHandTwo(options[secondChoice]);
+    setHandOne(OPTIONS[firstChoice]);
+    setHandTwo(OPTIONS[secondChoice]);
     console.log(handOne, handTwo);
   };
 
@@ -20,8 +20,8 @@ export default () => {
       <div className="game_card">
         <h1 className="title">Computer vs Computer Mode</h1>
         <div className="hands_wrapper">
-          <Hand image={handOne} />
-          <Hand image={handTwo} />
+          <Hand option={handOne} />
+          <Hand option={handTwo} />
         </div>
         <button className="start_btn" onClick={handlePlay}>
           Start

@@ -1,8 +1,11 @@
 import React from "react";
-
-export default image => {
+import { OPTIONS } from "../../constants/options";
+import "./Hand.scss";
+export default props => {
+  const { option } = props;
+  console.log("option", option);
   const style = {
-    backgroundImage: `url('${image.img}')`
+    backgroundImage: `url('${option.img}')`
   };
   return <div className="hand" style={style}></div>;
 };

@@ -20,5 +20,8 @@
       @include buttonStyle;
       width: 100%;
     }
+    .start_btn:active {
+      background: $buttonHoverColor;
+    }
   }
 }
