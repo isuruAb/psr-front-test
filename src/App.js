@@ -5,7 +5,7 @@ import Landing from "./components/Landing/Landing";
 import UserAndComputer from "./components/UserAndComputer/UserAndComputer";
 import ComputerAndComputer from "./components/ComputeAndComputer/ComputerAndComputer";
 import NotFound from "./components/NotFound/NotFound";
-import "./App.css";
+import "./App.scss";
 import ErrorBoundary from "./util/ErrorBoundary";
 
 function App() {

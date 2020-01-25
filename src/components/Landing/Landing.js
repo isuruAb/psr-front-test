@@ -1,4 +1,5 @@
 import React from "react";
+import "./Landing.scss";
 export default () => {
-  return <h1>Landing Here</h1>;
+  return <div className="parent_wrapper"></div>;
 };
