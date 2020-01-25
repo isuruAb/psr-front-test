@@ -1,13 +1,17 @@
 @import "../../assets/styles/mixins.scss";
 
-.landing_parent_wrapper {
+.game_options_parent_wrapper {
   @include background;
-  .login_card {
+
+  .options_card {
     @include gameCard;
+    width: 400px;
+
     .title {
       color: #000066;
+      text-align: center;
     }
-    .play_btn {
+    .option_btn {
       @include buttonStyle;
       text-decoration: none;
     }

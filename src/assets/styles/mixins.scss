@@ -1,0 +1,39 @@
+@import "./variables.scss";
+
+@mixin background {
+  width: 100%;
+  height: 100vh;
+  background: $backgroundColor;
+  font-family: bangersregular;
+}
+
+@mixin gameCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+@mixin buttonStyle {
+  background: $buttonColor;
+  color: #fff;
+  font-family: bangersregular;
+  font-size: 25px;
+  border: none;
+  margin: 20px auto 0 auto;
+  border-radius: 3px;
+  display: block;
+  text-align: center;
+  padding: 10px 5px;
+}
+
+@mixin handWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+}
