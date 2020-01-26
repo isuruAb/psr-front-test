@@ -7,3 +7,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+body {
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background: linear-gradient(to bottom, #3366cc 0%, #333399 100%);
+}

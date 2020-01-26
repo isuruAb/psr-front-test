@@ -12,7 +12,6 @@ export default () => {
     const secondChoice = Math.floor(Math.random() * Math.floor(3));
     setHandOne(OPTIONS[firstChoice]);
     setHandTwo(OPTIONS[secondChoice]);
-    console.log(handOne, handTwo);
   };
 
   return (

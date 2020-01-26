@@ -8,12 +8,11 @@
     width: 900px;
     .hands_wrapper {
       @include handWrapper;
-      .left_hand_wrapper {
-        flex: 1;
-      }
-      .right_hand_wrapper {
-        flex: 1;
-      }
+    }
+    .options_wrapper {
+      @include handWrapper;
+      margin: 20px 0;
+      padding: 20px 0;
     }
     .title {
       color: #000066;

@@ -1,0 +1,22 @@
+@import "../../assets/styles/variables.scss";
+.option {
+  background-repeat: no-repeat;
+  background-position: center;
+  flex: 1;
+  background-size: 150px;
+  border: none;
+}
+.option:hover {
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 150px;
+}
+.option:active {
+  cursor: pointer;
+  background-color: #989898;
+}
+
+.option[disabled] {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
