@@ -8,24 +8,25 @@ export default () => {
   const [handTwo, setHandTwo] = useState(OPTIONS[1]);
   const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef(null);
+  let count = 0;
+  const afterPlayBtn = () => {
+    console.log(handOne, handTwo);
+  };
   useEffect(() => {
     if (isPlaying) {
-      let count = 0;
       let secondChoice = 0;
       intervalRef.current = setInterval(() => {
         count++;
+        secondChoice = Math.floor(Math.random() * Math.floor(3));
+        setHandTwo(() => OPTIONS[secondChoice]);
         if (count > 30) {
           setIsPlaying(false);
-          return;
+          clearInterval(intervalRef.current);
         }
-        secondChoice = Math.floor(Math.random() * Math.floor(3));
-        setHandTwo(OPTIONS[secondChoice]);
       }, 100);
-      return () => {
-        clearInterval(intervalRef.current);
-      };
     }
-  }, [isPlaying]);
+  }, [count, isPlaying]);
+
   const handlePlay = () => {
     setIsPlaying(true);
   };
