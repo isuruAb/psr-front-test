@@ -4,6 +4,16 @@
   @include background;
   .login_card {
     @include gameCard;
+    .name_field {
+      height: 40px;
+      padding: 0 0 0 5px;
+      border: solid 1px #ccc;
+      border-radius: 3px;
+      text-align: center;
+      width: 100%;
+      margin: 10px 0 0 0;
+      font-size: 16px;
+    }
     .title {
       color: #000066;
     }

@@ -11,10 +11,6 @@
     }
     .hands_wrapper {
       @include handWrapper;
-      .hand {
-        flex: 1;
-        height: 300px;
-      }
     }
     .start_btn {
       @include buttonStyle;
@@ -22,6 +18,12 @@
     }
     .start_btn:active {
       background: $buttonHoverColor;
+    }
+    .parent_wrapper {
+      .result_wrapper {
+        text-align: center;
+        color: #ff5656;
+      }
     }
   }
 }
