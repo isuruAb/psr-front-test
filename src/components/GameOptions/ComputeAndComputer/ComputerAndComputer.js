@@ -43,6 +43,7 @@ export default () => {
       return () => clearInterval(intervalRef.current);
     }
   }, [isPlaying, afterPlayBtn]);
+  
   const handlePlay = () => {
     setIsPlaying(true);
   };

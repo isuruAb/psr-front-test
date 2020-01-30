@@ -10,7 +10,7 @@
       border: solid 1px #ccc;
       border-radius: 3px;
       text-align: center;
-      width: 100%;
+      width: 98%;
       margin: 10px 0 0 0;
       font-size: 16px;
     }
@@ -20,6 +20,7 @@
     .play_btn {
       @include buttonStyle;
       text-decoration: none;
+      width: 100%;
     }
   }
 }

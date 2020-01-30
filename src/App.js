@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ROUTES } from "./util/routes";
 import Landing from "./components/Landing/Landing";
@@ -9,28 +10,36 @@ import NotFound from "./components/NotFound/NotFound";
 
 import "./App.scss";
 import ErrorBoundary from "./util/ErrorBoundary";
+import store from "./redux/store";
+import PrivateRoute from "./util/PrivateRoute";
 
 function App() {
   let ret = (
     <ErrorBoundary>
-      <Router>
-        <Switch>
-          <Route component={Landing} exact path={ROUTES.index} />
-          <Route component={SelectMode} exact path={ROUTES.game_options} />
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route component={Landing} exact path={ROUTES.index} />
+            <PrivateRoute
+              component={SelectMode}
+              exact
+              path={ROUTES.game_options}
+            />
 
-          <Route
-            component={ComputerAndComputer}
-            exact
-            path={ROUTES.computer_and_computer}
-          />
-          <Route
-            component={UserAndComputer}
-            exact
-            path={ROUTES.user_and_computer}
-          />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
+            <PrivateRoute
+              component={ComputerAndComputer}
+              exact
+              path={ROUTES.computer_and_computer}
+            />
+            <PrivateRoute
+              component={UserAndComputer}
+              exact
+              path={ROUTES.user_and_computer}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </Provider>
     </ErrorBoundary>
   );
   return ret;
