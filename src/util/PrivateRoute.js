@@ -1,14 +1,10 @@
 import React from "react";
-import store from "../redux/store";
 import { Route, Redirect } from "react-router-dom";
 import { ROUTES } from "./routes";
+import { useSelector } from "react-redux";
 
 function PrivateRoute({ component: Component, ...rest }) {
-  let { name } = store.getState();
-
-  store.subscribe(() => {
-    name = store.getState().name;
-  });
+  let name = useSelector(state => state.name);
 
   return (
     <Route

@@ -8,21 +8,25 @@ export default ({ modalStatus, modalClose }) => {
           <div className="modal_container">
             {" "}
             <table>
-              <tr>
-                <th>Index</th>
-                <th>Name</th>
-                <th>Score</th>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Index</th>
+                  <th>Name</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
             </table>
             <button onClick={modalClose} className="start_btn">
               Replay

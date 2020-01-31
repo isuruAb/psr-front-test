@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { useHistory } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 import "./UserAndComputer.scss";
 import Hand from "../Hand";
 import { OPTIONS } from "../../../constants/options";
 import Option from "../Option";
 import Timer from "../Timer/Timer";
 import Modal from "../Modal/Modal";
+import { SaveUserScoreAction } from "../../../redux/actions/userActions";
 export default () => {
   const [handOne, setHandOne] = useState(OPTIONS[1]);
   const [handTwo, setHandTwo] = useState(OPTIONS[1]);
@@ -14,8 +14,9 @@ export default () => {
   const [showModal, setShowModal] = useState(false);
   const [points, setPoints] = useState(0);
   const [result, setResult] = useState("");
-  const timeLeft = 30;
+  const timeLeft = 5;
   const intervalRef = useRef(null);
+  const userName = useSelector(state => state.name);
   const afterPlayBtn = useCallback(
     computer => {
       if (handOne.name === computer.name) {
@@ -59,8 +60,11 @@ export default () => {
   const selectOption = option => {
     setHandOne(option);
   };
-  const countDownEnds = status => {
+  const countDownEnds = async status => {
+    SaveUserScoreAction({ name: userName, score: points });
     setShowModal(!status);
+
+    console.log(typeof res);
   };
   const modalClose = () => {
     window.location.reload();

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-import "./ComputerAndComputer.scss";
+import "../../../assets/styles/scss/ComputerAndComputer.scss";
 import { OPTIONS } from "../../../constants/options";
 import Hand from "../Hand";
 export default () => {
@@ -43,7 +43,7 @@ export default () => {
       return () => clearInterval(intervalRef.current);
     }
   }, [isPlaying, afterPlayBtn]);
-  
+
   const handlePlay = () => {
     setIsPlaying(true);
   };

@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../util/routes";
+import { useSelector } from "react-redux";
+
 import "./SelectMode.scss";
 export default () => {
   const handlePlay = () => {
     console.log("log");
   };
+  const data = useSelector(state => state.name);
   return (
     <div className="game_options_parent_wrapper">
       <div className="options_card">

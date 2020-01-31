@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import "./Landing.scss";
-import { ROUTES } from "../../util/routes";
+import { UserLoginAction } from "../../redux/actions/userActions";
+import { useHistory } from "react-router-dom";
 
 export default () => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
   const handlePlay = () => {
-    dispatch({ type: "USER_LOGIN", payload: name });
-    history.push(ROUTES.game_options);
+    UserLoginAction(dispatch, history, name);
   };
 
   const handleName = e => {
