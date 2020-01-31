@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./UserAndComputer.scss";
 import Hand from "../Hand";
 import { OPTIONS } from "../../../constants/options";
 import Option from "../Option";
-import Timer from "../Timer/Timer";
 import Modal from "../Modal/Modal";
-import { SaveUserScoreAction } from "../../../redux/actions/userActions";
+import {
+  SaveUserScoreAction,
+  GetUserScoreAction
+} from "../../../redux/actions/userActions";
 export default () => {
   const [handOne, setHandOne] = useState(OPTIONS[1]);
   const [handTwo, setHandTwo] = useState(OPTIONS[1]);
@@ -14,9 +16,12 @@ export default () => {
   const [showModal, setShowModal] = useState(false);
   const [points, setPoints] = useState(0);
   const [result, setResult] = useState("");
-  const timeLeft = 5;
+  const [timeLeft, setTimeLeft] = useState(5);
   const intervalRef = useRef(null);
   const userName = useSelector(state => state.name);
+  const scores = useSelector(state => state.scores);
+  const dispatch = useDispatch();
+
   const afterPlayBtn = useCallback(
     computer => {
       if (handOne.name === computer.name) {
@@ -60,15 +65,34 @@ export default () => {
   const selectOption = option => {
     setHandOne(option);
   };
-  const countDownEnds = async status => {
-    SaveUserScoreAction({ name: userName, score: points });
-    setShowModal(!status);
 
-    console.log(typeof res);
-  };
   const modalClose = () => {
     window.location.reload();
   };
+  useEffect(() => {
+    const countDownEnds = status => {
+      SaveUserScoreAction({ name: userName, score: points }).then(() => {
+        GetUserScoreAction(dispatch);
+      });
+      setShowModal(!status);
+    };
+    // exit early when we reach 0
+    if (!timeLeft) {
+      countDownEnds(false);
+      return;
+    }
+
+    // save intervalId to clear the interval when the
+    // component re-renders
+    const intervalId = setInterval(() => {
+      setTimeLeft(timeLeft - 1);
+    }, 1000);
+
+    // clear interval on re-render to avoid memory leaks
+    return () => clearInterval(intervalId);
+    // add timeLeft as a dependency to re-rerun the effect
+    // when we update it
+  }, [timeLeft, points, userName, dispatch]);
   return (
     <div className="unc_parent_wrapper">
       <div className="game_card">
@@ -79,9 +103,7 @@ export default () => {
         </div>
         <div className="parent_wrapper">
           <div className="timer_wrapper">
-            <h1>
-              <Timer countStart={timeLeft} countDownStatus={countDownEnds} />
-            </h1>
+            <h1>{timeLeft}</h1>
           </div>
           <div className="result_wrapper">
             <h1>{result}</h1>
@@ -122,7 +144,11 @@ export default () => {
           />
         </div>
       </div>
-      <Modal modalStatus={showModal} modalClose={modalClose} />
+      <Modal
+        modalStatus={showModal}
+        modalClose={modalClose}
+        modalData={scores}
+      />
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { OPTIONS } from "../../constants/options";
 import "./Option.scss";
 export default props => {
   const { option, onClick, disabled } = props;

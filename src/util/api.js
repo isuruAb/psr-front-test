@@ -22,24 +22,42 @@ export const postRequest = (url, data) => {
             break;
 
           default:
-            // Expects a JSON
             return response.json();
         }
       })
       .then(responseJson => {
-        if (responseJson.success) {
+        console.log("responseJson", responseJson);
+        if (responseJson) {
           resolve(responseJson);
         }
+        reject({ code: responseJson.code, error: responseJson.error });
+      })
+      .catch(error => {
+        reject({ code: 0, error: error });
+      });
+  });
+};
 
-        switch (responseJson.code) {
+export const getRequest = url => {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+  return new Promise((resolve, reject) => {
+    fetch(serverURL + url)
+      .then(response => {
+        switch (response.status) {
+          case 401:
+            reject({ code: response.status, error: "Not authenticated" });
+            break;
+
           case 403:
-            reject({ code: responseJson.code, error: "Forbidden" });
+            reject({ code: response.status, error: "Forbidden" });
             break;
 
           default:
+            return response.json();
         }
-
-        reject({ code: responseJson.code, error: responseJson.error });
+      })
+      .then(responseJson => {
+        resolve(responseJson);
       })
       .catch(error => {
         reject({ code: 0, error: error });
