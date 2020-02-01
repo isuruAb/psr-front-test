@@ -12,3 +12,7 @@ https://github.com/isuruAb/psr-back-test
 * Create ".env" file in the project root
 * Open ".env" file and define the server URL `REACT_APP_SERVER_URL="[SERVER URL GOES HERE]"`
 * start server `npm start`
+
+## Demo Game Play 
+
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/7692626/73596625-b7232e80-455e-11ea-8771-d4e3ea1186c8.gif)
