@@ -8,7 +8,7 @@ https://github.com/isuruAb/psr-back-test
 
 ## Start
 
-Clone the repository : `git clone https://github.com/isuruAb/psr-front-test.git`
-Create ".env" file in the project root
-Open ".env" file and define the server URL `REACT_APP_SERVER_URL="[SERVER URL GOES HERE]"`
-start server `npm start`
+* Clone the repository : `git clone https://github.com/isuruAb/psr-front-test.git`
+* Create ".env" file in the project root
+* Open ".env" file and define the server URL `REACT_APP_SERVER_URL="[SERVER URL GOES HERE]"`
+* start server `npm start`
