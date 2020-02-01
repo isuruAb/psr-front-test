@@ -1,5 +1,6 @@
 import React from "react";
 import "../../assets/styles/scss/GameOptions/Hand.scss";
+
 export default props => {
   const { option } = props;
   const style = {

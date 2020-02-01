@@ -1,5 +1,6 @@
 import React from "react";
 import "../../assets/styles/scss/GameOptions/Modal.scss";
+
 export default ({ modalStatus, modalClose, modalData }) => {
   return (
     <>
