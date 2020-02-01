@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./UserAndComputer.scss";
+import "../../../assets/styles/scss/UserAndComputer.scss";
 import Hand from "../Hand";
 import { OPTIONS } from "../../../constants/options";
 import Option from "../Option";
@@ -16,7 +16,7 @@ export default () => {
   const [showModal, setShowModal] = useState(false);
   const [points, setPoints] = useState(0);
   const [result, setResult] = useState("");
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(60);
   const intervalRef = useRef(null);
   const userName = useSelector(state => state.name);
   const scores = useSelector(state => state.scores);
