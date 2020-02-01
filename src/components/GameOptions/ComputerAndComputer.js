@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Hand from "./Hand";
+import { OPTIONS } from "../../constants/options";
+import "../../assets/styles/scss/GameOptions/ComputerAndComputer.scss";
 
-import "../../../assets/styles/scss/ComputerAndComputer.scss";
-import { OPTIONS } from "../../../constants/options";
-import Hand from "../Hand";
 export default () => {
   const [handOne, setHandOne] = useState(OPTIONS[1]);
   const [handTwo, setHandTwo] = useState(OPTIONS[1]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [result, setResult] = useState("");
   const intervalRef = useRef(null);
-
+  // Calculate result
   const afterPlayBtn = useCallback((firstChoice, secondChoice) => {
     if (firstChoice.name === secondChoice.name) {
       setResult("Draw");
@@ -23,6 +23,7 @@ export default () => {
       setResult("Left side won");
     }
   }, []);
+  // randomly choose two options
   useEffect(() => {
     let count = 0;
     let firstChoice = 0;

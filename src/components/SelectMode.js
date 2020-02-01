@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ROUTES } from "../../util/routes";
+import { ROUTES } from "../util/routes";
 
-import "./SelectMode.scss";
+import "../assets/styles/scss/SelectMode.scss";
 export default () => {
   return (
     <div className="game_options_parent_wrapper">

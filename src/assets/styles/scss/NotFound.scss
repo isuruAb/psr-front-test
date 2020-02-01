@@ -1,0 +1,17 @@
+@import "../mixins.scss";
+
+.not_found_message {
+  width: 100%;
+  height: 100vh;
+  .message {
+    @include gameCard;
+    h1 {
+      text-align: center;
+      font-family: bangersregular;
+      font-size: 60px;
+      padding: 50px;
+      width: 500px;
+      background: #fff;
+    }
+  }
+}

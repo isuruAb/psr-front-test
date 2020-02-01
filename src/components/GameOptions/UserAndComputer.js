@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../../../assets/styles/scss/UserAndComputer.scss";
-import Hand from "../Hand";
-import { OPTIONS } from "../../../constants/options";
-import Option from "../Option";
-import Modal from "../Modal/Modal";
+import Hand from "./Hand";
+import Modal from "./Modal";
+import { OPTIONS } from "../../constants/options";
+import Option from "./Option";
 import {
   SaveUserScoreAction,
   GetUserScoreAction
-} from "../../../redux/actions/userActions";
+} from "../../redux/actions/userActions";
+import "../../assets/styles/scss/GameOptions/UserAndComputer.scss";
+
 export default () => {
   const [handOne, setHandOne] = useState(OPTIONS[1]);
   const [handTwo, setHandTwo] = useState(OPTIONS[1]);
@@ -17,11 +18,13 @@ export default () => {
   const [points, setPoints] = useState(0);
   const [result, setResult] = useState("");
   const [timeLeft, setTimeLeft] = useState(60);
+
   const intervalRef = useRef(null);
   const userName = useSelector(state => state.name);
   const scores = useSelector(state => state.scores);
   const dispatch = useDispatch();
 
+  //Show the result after every round
   const afterPlayBtn = useCallback(
     computer => {
       if (handOne.name === computer.name) {
@@ -39,6 +42,7 @@ export default () => {
     },
     [handOne, points]
   );
+  //Select random hand
   useEffect(() => {
     let count = 0;
 
@@ -61,14 +65,16 @@ export default () => {
   const handlePlay = () => {
     setIsPlaying(true);
   };
-
+  //User selects an option
   const selectOption = option => {
     setHandOne(option);
   };
-
+  //Triggers on click replay button
   const modalClose = () => {
     window.location.reload();
   };
+
+  //Countdown calculation
   useEffect(() => {
     const countDownEnds = status => {
       SaveUserScoreAction({ name: userName, score: points }).then(() => {
@@ -81,18 +87,14 @@ export default () => {
       countDownEnds(false);
       return;
     }
-
     // save intervalId to clear the interval when the
-    // component re-renders
     const intervalId = setInterval(() => {
       setTimeLeft(timeLeft - 1);
     }, 1000);
-
     // clear interval on re-render to avoid memory leaks
     return () => clearInterval(intervalId);
-    // add timeLeft as a dependency to re-rerun the effect
-    // when we update it
   }, [timeLeft, points, userName, dispatch]);
+
   return (
     <div className="unc_parent_wrapper">
       <div className="game_card">

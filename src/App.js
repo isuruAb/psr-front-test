@@ -1,17 +1,16 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ROUTES } from "./util/routes";
-import Landing from "./components/Landing/Landing";
-import UserAndComputer from "./components/GameOptions/UserAndComputer/UserAndComputer";
-import ComputerAndComputer from "./components/GameOptions/ComputeAndComputer/ComputerAndComputer";
-import SelectMode from "./components/SelectMode/SelectMode";
-import NotFound from "./components/NotFound/NotFound";
-
-import "./App.scss";
+import ComputerAndComputer from "./components/GameOptions/ComputerAndComputer";
 import ErrorBoundary from "./util/ErrorBoundary";
-import store from "./redux/store";
+import Landing from "./components/Landing";
+import NotFound from "./components/NotFound";
 import PrivateRoute from "./util/PrivateRoute";
+import { ROUTES } from "./util/routes";
+import SelectMode from "./components/SelectMode";
+import store from "./redux/store";
+import UserAndComputer from "./components/GameOptions/UserAndComputer";
+import "./assets/styles/App.scss";
 
 function App() {
   let ret = (

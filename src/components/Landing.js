@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import "./Landing.scss";
-import { UserLoginAction } from "../../redux/actions/userActions";
+import "../assets/styles/scss/Landing.scss";
+import { UserLoginAction } from "../redux/actions/userActions";
 import { useHistory } from "react-router-dom";
 
 export default () => {
